@@ -1,4 +1,4 @@
-
+/*
 import fetch from 'node-fetch'
 import { mediafiredl } from '@bochilteam/scraper'
 
@@ -36,4 +36,4 @@ handler.diamond = true
 handler.premium = false
 
 export default handler
-
+*/
