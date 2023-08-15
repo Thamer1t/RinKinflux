@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import axios from 'axios';
-import workData from '../lib/work.json';
+import fgwork from '../lib/work.json';
 
 let handler = async (m, { conn, usedPrefix, command }) => {
   let hasil = Math.floor(Math.random() * 2000);
@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     throw `*🧘🏻‍♂️ انت مُتعب من العمل* لذلك يجب عليك ان ترتاح لمدة *${remainingTime}* للعمل مجددًا!`;
   }
 
-  let res = pickRandom(workData);
+  let res = pickRandom(fgwork);
   global.db.data.users[m.sender].exp += hasil;
 
   m.reply(`
