@@ -1,4 +1,4 @@
-
+/*
 import fg from 'api-dylux' 
 import { tiktokdl, tiktokdlv2, tiktokdlv3 } from '@bochilteam/scraper'
 
@@ -37,3 +37,4 @@ handler.command = /^(tiktok|ttdl|tiktokdl|tiktoknowm)$/i
 handler.diamond = true
 
 export default handler
+*/
