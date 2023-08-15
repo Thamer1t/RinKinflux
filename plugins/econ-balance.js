@@ -20,8 +20,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 
 *ملاحظة:*
 يمكنك شراء 💎 الماس باستخدام الأوامر التالية:
-❏ *${usedPrefix}todiamond* <المبلغ>
-❏ *${usedPrefix}todiamondall*`, m, { mentions: [who] })
+❏ *${usedPrefix}الى-الماس* <المبلغ>
+❏ *${usedPrefix}الى-الماس-الكل*`, m, { mentions: [who] })
 }
 
 handler.help = ['balance']
