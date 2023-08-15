@@ -70,7 +70,7 @@ ${Object.keys(listItems).map((v) => {
     const item = (args[0] || '').toLowerCase()
     const total = Math.floor(isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 1), Number.MAX_SAFE_INTEGER) : 1) * 1
     if (!listItems[item]) return m.reply(info)
-    if (command.toLowerCase() == 'buy') {
+    if (command.toLowerCase() == 'شراء') {
         let paymentMethod = Object.keys(listItems[item]).find(v => v in user)
         if (user[paymentMethod] < listItems[item][paymentMethod] * total) return m.reply(`ليس لديك ما يكفي من ${paymentMethod}${global.rpg.emoticon(paymentMethod)} لشراء *${total}* ${item}${global.rpg.emoticon(item)}. تحتاج إلى *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* ${paymentMethod} إضافي للشراء`)
         user[paymentMethod] -= listItems[item][paymentMethod] * total
