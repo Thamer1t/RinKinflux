@@ -36,7 +36,7 @@ ${htki} القدرة ${htka}
 `
 
   try {
-    if (/متجر-الحيوانات/i.test(command)) {
+    if (/حيوانات/i.test(command)) {
       switch (type) {
         case 'قطة':
           if (user.cat > 0) return m.reply('لديك هذه القطة بالفعل!')
