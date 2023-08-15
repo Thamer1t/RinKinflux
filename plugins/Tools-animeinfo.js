@@ -23,11 +23,11 @@ let handler = async (m, { conn, text, usedPrefix }) => {
 🎏 • *المفضلة:* ${result.favorites}
 🎇 • *التقييم:* ${result.rating}
 🏅 • *الترتيب:* ${result.rank}
-♦ • *المقطع الدعائي:* ${result.trailer.url}
+♦ • *التريلر:* ${result.trailer.url}
 🌐 • *الرابط:* ${result.url}
 🎆 • *الخلفية:* ${resultes.text}
 ❄ • *الملخص:* ${resultes2.text}
-_صنع بحب من قبل بوت كينفلوكس_`;
+_صنع بحب من قبل بوت غومونريونغ`;
 
     conn.sendFile(m.chat, result.images.jpg.image_url, 'error.jpg', AnimeInfo, m);
   } catch {
@@ -35,5 +35,5 @@ _صنع بحب من قبل بوت كينفلوكس_`;
   }
 };
 
-handler.command = /^(anime|animeinfo)$/i;
+handler.command = /^(معلومات|animeinfo)$/i;
 export default handler;
