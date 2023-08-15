@@ -1,54 +1,54 @@
 //import db from '../lib/database.js'
 const items = {
-    شراء: {
-        ألماس: {
+    buy: {
+        diamond: {
             exp: 350
         },
-        جرعة: {
+        potion: {
             money: 1250,
         },
-        قمامة: {
+        trash: {
             money: 4,
         },
-        خشب: {
+        wood: {
             money: 700
         },
-        حجر: {
+        rock: {
             money: 850
         },
-        خيط: {
+        string: {
             money: 400
         },
-        حديد: { 
+        iron: { 
         	money: 3000
         }
     },
-    بيع: {
-        جرعة: {
+    sell: {
+        potion: {
             money: 125,
         },
-        قمامة: {
+        trash: {
             money: 2
         },
-        خشب: {
+        wood: {
             money: 600
         },
-        حجر: {
+        rock: {
             money: 750
         },
-        خيط: {
+        string: {
             money: 300
         },
-        حديد: {
+        iron: {
             money: 2500
         },
-        ذهب: {
+        gold: {
             money: 4700
         },
-        ألماس: {
+        diamond: {
             money: 9000
         },
-        زمرد: {
+        emerald: {
             money: 15000
         }
     }
@@ -58,10 +58,10 @@ let handler = async (m, { command, usedPrefix, args }) => {
     let user = global.db.data.users[m.sender]
     const listItems = Object.fromEntries(Object.entries(items[command.toLowerCase()]).filter(([v]) => v && v in user))
     const info = `
-استخدم *${usedPrefix}${command} [المنتج] [لعدد]*
-مثال: *${usedPrefix}${command} جرعة 10*
-    
-📍قائمة المنتجات: 
+استخدم الصيغة *${usedPrefix}${command} [صندوق] [العدد]*
+مثال الاستخدام: *${usedPrefix}${command} potion 10*
+
+📍 قائمة العناصر:
 ${Object.keys(listItems).map((v) => {
         let paymentMethod = Object.keys(listItems[v]).find(v => v in user)
         return `${v} | ${listItems[v][paymentMethod]} ${paymentMethod}`.trim()
@@ -72,20 +72,20 @@ ${Object.keys(listItems).map((v) => {
     if (!listItems[item]) return m.reply(info)
     if (command.toLowerCase() == 'buy') {
         let paymentMethod = Object.keys(listItems[item]).find(v => v in user)
-        if (user[paymentMethod] < listItems[item][paymentMethod] * total) return m.reply(`ليس لديك مايكفي من ${global.rpg.emoticon(paymentMethod)}${paymentMethod} للشراء *${total}* ${global.rpg.emoticon(item)}${item}. تحتاج إلى *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}*  ${paymentMethod} لتستطيع الشراء`)
+        if (user[paymentMethod] < listItems[item][paymentMethod] * total) return m.reply(`ليس لديك ما يكفي من ${paymentMethod}${global.rpg.emoticon(paymentMethod)} لشراء *${total}* ${item}${global.rpg.emoticon(item)}. تحتاج إلى *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* ${paymentMethod} إضافي للشراء`)
         user[paymentMethod] -= listItems[item][paymentMethod] * total
         user[item] += total
-        return m.reply(`لقد اشتريت *${total}* ${global.rpg.emoticon(item)}${item}`)
+        return m.reply(`لقد اشتريت *${total}* ${item}${global.rpg.emoticon(item)}`)
     } else {
-        if (user[item] < total) return m.reply(`ليس لديك مايكفي من *${item}* للبيع, لاتملك سوى ${user[item]} `)
+        if (user[item] < total) return m.reply(`ليس لديك ما يكفي من *${item}* للبيع، لديك فقط ${user[item]} عناصر`)
         user[item] -= total
         user.money += listItems[item].money * total
-        return m.reply(`لقد بعت *${total}* ${item}`)
+        return m.reply(`لقد قمت ببيع *${total}* ${item}`)
     }
 }
 
-handler.help = ['buy', 'sell'].map(v => v + ' [item] [count]')
-handler.tags = ['ار بي جي']
+handler.help = ['buy', 'sell'].map(v => v + ' [العنصر] [العدد]')
+handler.tags = ['rpg']
 handler.command = /^(شراء|بيع)$/i
 
 handler.disabled = false
