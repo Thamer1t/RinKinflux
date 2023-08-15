@@ -58,10 +58,10 @@ let handler = async (m, { command, usedPrefix, args }) => {
     let user = global.db.data.users[m.sender]
     const listItems = Object.fromEntries(Object.entries(items[command.toLowerCase()]).filter(([v]) => v && v in user))
     const info = `
-استخدم الصيغة *${usedPrefix}${command} [صندوق] [العدد]*
-مثال الاستخدام: *${usedPrefix}${command} potion 10*
-
-📍 قائمة العناصر:
+Use Format *${usedPrefix}${command} [crate] [count]*
+Usage example: *${usedPrefix}${command} potion 10*
+    
+📍Items list: 
 ${Object.keys(listItems).map((v) => {
         let paymentMethod = Object.keys(listItems[v]).find(v => v in user)
         return `${v} | ${listItems[v][paymentMethod]} ${paymentMethod}`.trim()
@@ -70,23 +70,23 @@ ${Object.keys(listItems).map((v) => {
     const item = (args[0] || '').toLowerCase()
     const total = Math.floor(isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 1), Number.MAX_SAFE_INTEGER) : 1) * 1
     if (!listItems[item]) return m.reply(info)
-    if (command.toLowerCase() == 'شراء') {
+    if (command.toLowerCase() == 'buy') {
         let paymentMethod = Object.keys(listItems[item]).find(v => v in user)
-        if (user[paymentMethod] < listItems[item][paymentMethod] * total) return m.reply(`ليس لديك ما يكفي من ${paymentMethod}${global.rpg.emoticon(paymentMethod)} لشراء *${total}* ${item}${global.rpg.emoticon(item)}. تحتاج إلى *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* ${paymentMethod} إضافي للشراء`)
+        if (user[paymentMethod] < listItems[item][paymentMethod] * total) return m.reply(`You don't have enough ${global.rpg.emoticon(paymentMethod)}${paymentMethod} to buy *${total}* ${global.rpg.emoticon(item)}${item}. You need *${(listItems[item][paymentMethod] * total) - user[paymentMethod]}* more ${paymentMethod} to be able to buy`)
         user[paymentMethod] -= listItems[item][paymentMethod] * total
         user[item] += total
-        return m.reply(`لقد اشتريت *${total}* ${item}${global.rpg.emoticon(item)}`)
+        return m.reply(`You bought *${total}* ${global.rpg.emoticon(item)}${item}`)
     } else {
-        if (user[item] < total) return m.reply(`ليس لديك ما يكفي من *${item}* للبيع، لديك فقط ${user[item]} عناصر`)
+        if (user[item] < total) return m.reply(`You don't have enough *${item}* to sell, you only have ${user[item]} items`)
         user[item] -= total
         user.money += listItems[item].money * total
-        return m.reply(`لقد قمت ببيع *${total}* ${item}`)
+        return m.reply(`You sold *${total}* ${item}`)
     }
 }
 
-handler.help = ['buy', 'sell'].map(v => v + ' [العنصر] [العدد]')
+handler.help = ['buy', 'sell'].map(v => v + ' [item] [count]')
 handler.tags = ['rpg']
-handler.command = /^(شراء|بيع)$/i
+handler.command = /^(buy|sell)$/i
 
 handler.disabled = false
 
