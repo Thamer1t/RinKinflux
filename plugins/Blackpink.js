@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 
 let bpink = []
 
@@ -27,3 +27,4 @@ handler.limit = false
 handler.command = /^(bpink|bp|blackpink)$/i
 
 export default handler
+*/
