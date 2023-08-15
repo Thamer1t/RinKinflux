@@ -1,4 +1,4 @@
-import { sticker } from '../lib/sticker.js'
+/*import { sticker } from '../lib/sticker.js'
 import fetch from 'node-fetch'
 import axios from 'axios'
 
@@ -17,3 +17,4 @@ export default handler
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
+*/
