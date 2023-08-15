@@ -1,4 +1,4 @@
-
+/*
 import fg from 'api-dylux'
 import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
 let limit = 350
@@ -47,3 +47,4 @@ handler.command = ['ytmp4', 'video']
 handler.diamond = true
 
 export default handler
+*/
