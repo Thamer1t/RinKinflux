@@ -1,20 +1,18 @@
-
-export async function all(m) {
-	
-    // when someone sends a group link to the bot's dm
-    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('open this link')) && !m.isBaileys && !m.isGroup) {
-     this.sendButton(m.chat, `*Invite bot to a group* 
-     
-        // when someone sends a group link to the bot's dm
-    if ((m.mtype === 'hi' || m.text.startsWith('kinlflux bot') || m.text.startsWith('hello')) && !m.isBaileys && !m.isGroup) {
-     this.sendButton(m.chat, `*i am kinflux bot how can i help you reply with .list to see bots list  .owner to see bts owner .menu to see bots menu* 
+/*export async function all(m) {
+  // عندما يقوم شخص ما بإرسال رابط للمجموعة إلى الرسائل المباشرة للبوت
+  if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('open this link')) && !m.isBaileys && !m.isGroup) {
+    this.sendButton(m.chat, `*دعوة البوت إلى مجموعة*
+    
+    عندما يقوم شخص ما بإرسال رابط للمجموعة إلى الرسائل المباشرة للبوت
+    إذا (m.mtype === 'hi' || m.text.startsWith('kinlflux bot') || m.text.startsWith('hello')) && !m.isBaileys && !m.isGroup) {
+      this.sendButton(m.chat, `*أنا بوت كينفلوكس، كيف يمكنني مساعدتك؟ الرد بـ .list لرؤية قائمة البوتات  .owner لرؤية مالك البوت .menu لرؤية قائمة البوت*
         
-  Hallo @${m.sender.split('@')[0]} 
-  you can rent the bot to join a group or contact owner 
-  more info click on the button
-`.trim(), igfg, null, [['Rent', '/buyprem']] , m, { mentions: [m.sender] })
+  مرحبًا @${m.sender.split('@')[0]}
+  يمكنك استئجار البوت للانضمام إلى مجموعة أو الاتصال بالمالك
+  مزيد من المعلومات انقر على الزر
+`.trim(), igfg, null, [['استئجار', '/buyprem']], m, { mentions: [m.sender] })
     m.react('💎')
-  } 
+  }
   
-   return !0
-}
+  return !0
+}*/
