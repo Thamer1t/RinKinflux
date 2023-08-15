@@ -8,26 +8,26 @@ let handler = async (m, { conn, text, usedPrefix }) => {
   try {
     let anime = await client.searchAnime(text);
     let result = anime.data[0];
-    let resultes = await translate(`${result.background}`, { to: 'en', autoCorrect: true });
-    let resultes2 = await translate(`${result.synopsis}`, { to: 'hi', autoCorrect: true });
+    let resultes = await translate(`${result.background}`, { to: 'ar', autoCorrect: true });
+    let resultes2 = await translate(`${result.synopsis}`, { to: 'ar', autoCorrect: true });
     let AnimeInfo = `
-🎀 • *Title:* ${result.title}
-🎋 • *Format:* ${result.type}
-📈 • *Status:* ${result.status.toUpperCase().replace(/\_/g, ' ')}
-🍥 • *Total Episodes:* ${result.episodes}
-🎈 • *Duration: ${result.duration}*
-✨ • *Based on:* ${result.source.toUpperCase()}
-💫 • *Released:* ${result.aired.from}
-🎗 • *Finished:* ${result.aired.to}
-🎐 • *Popularity:* ${result.popularity}
-🎏 • *Favorites:* ${result.favorites}
-🎇 • *Rating:* ${result.rating}
-🏅 • *Rank:* ${result.rank}
-♦ • *Trailer:* ${result.trailer.url}
-🌐 • *URL:* ${result.url}
-🎆 • *Background:* ${resultes.text}
-❄ • *Synopsis:* ${resultes2.text}
-_made with love by kinflux bot`;
+🎀 • *العنوان:* ${result.title}
+🎋 • *التنسيق:* ${result.type}
+📈 • *الحالة:* ${result.status.toUpperCase().replace(/\_/g, ' ')}
+🍥 • *عدد الحلقات:* ${result.episodes}
+🎈 • *المدة: ${result.duration}*
+✨ • *مقتبس من:* ${result.source.toUpperCase()}
+💫 • *تاريخ البدء:* ${result.aired.from}
+🎗 • *تاريخ الانتهاء:* ${result.aired.to}
+🎐 • *الشهرة:* ${result.popularity}
+🎏 • *المفضلة:* ${result.favorites}
+🎇 • *التقييم:* ${result.rating}
+🏅 • *الترتيب:* ${result.rank}
+♦ • *المقطع الدعائي:* ${result.trailer.url}
+🌐 • *الرابط:* ${result.url}
+🎆 • *الخلفية:* ${resultes.text}
+❄ • *الملخص:* ${resultes2.text}
+_صنع بحب من قبل بوت كينفلوكس_`;
 
     conn.sendFile(m.chat, result.images.jpg.image_url, 'error.jpg', AnimeInfo, m);
   } catch {
