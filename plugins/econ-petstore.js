@@ -104,7 +104,7 @@ ${caption}
 }
 handler.help = ['petshop <قطة|كلب|حصان|ثعلب>']
 handler.tags = ['rpg']
-handler.command = /^(متجر-الحيوانات)$/i
+handler.command = /^(حيوانات)$/i
 handler.register = false
 handler.limit = false
 module.exports = handler
