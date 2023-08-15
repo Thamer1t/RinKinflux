@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 import axios from 'axios'
 let handler = async (m, { conn, usedPrefix, command }) => {
 	
@@ -58,3 +58,4 @@ handler.register = true
 handler.group = true
 
 export default handler
+*/
