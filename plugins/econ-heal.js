@@ -19,7 +19,7 @@ let buff = (buf == 0 ? '5' : '' || buf == 1 ? '10' : '' || buf == 2 ? '15' : '' 
 }
 
 handler.help = ['علاج']
-handler.tags = ['ار بي جي']
+handler.tags = ['rpg']
 handler.command = /^(علاج)$/i
 
 export default handler
