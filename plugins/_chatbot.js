@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 const BRAINSHOP_BID = '176217';
 const BRAINSHOP_KEY = 'knXmUkn9zcHAk09T';
@@ -27,4 +27,4 @@ export async function before(m, { conn }) {
   const reply = data.cnt;
   
   m.reply(reply);
-}
+}*/
